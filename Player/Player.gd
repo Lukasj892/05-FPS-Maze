@@ -31,7 +31,7 @@ func _unhandled_input(event):
 		$Pivot.rotation.x = clamp($Pivot.rotation.x, -mouse_range, mouse_range)
 
 func _physics_process(delta):
-	if Input.is_key_pressed(KEY_SHIFT) and $Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x >= 0.001:
+	if Input.is_key_pressed(KEY_SHIFT) and Input.is_action_pressed("forward") and $Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x >= 0.001:
 		$Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x -= 0.005
 		cur_speed = sprint_speed
 		if $Pivot/Camera.fov < 80:
