@@ -1,9 +1,12 @@
 extends Node
 
-var menu = null
+var keyCount = 0
+
+onready var menu = get_node_or_null("/root/Game/UI/Menu")
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	menu.hide()
 
 func _unhandled_input(_event):
 	if Input.is_action_pressed("menu"):
