@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3D Template"
+config/name="Project 5"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 

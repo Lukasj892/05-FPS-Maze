@@ -3,7 +3,9 @@ extends KinematicBody
 onready var Camera = $Pivot/Camera
 
 var gravity = -30
-var max_speed = 8
+var cur_speed = 8
+var run_speed = 8
+var sprint_speed = 12
 var mouse_sensitivity = 0.005
 var mouse_range = 1.2
 
@@ -29,9 +31,38 @@ func _unhandled_input(event):
 		$Pivot.rotation.x = clamp($Pivot.rotation.x, -mouse_range, mouse_range)
 
 func _physics_process(delta):
+	if Input.is_key_pressed(KEY_SHIFT) and $Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x >= 0.001:
+		$Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x -= 0.005
+		cur_speed = sprint_speed
+		if $Pivot/Camera.fov < 80:
+			$Pivot/Camera.fov += 2
+	elif not Input.is_key_pressed(KEY_SHIFT) and $Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x <= 1:
+		$Pivot/Camera/Sprint/Border/BG/Bar.rect_scale.x += 0.0025
+		cur_speed = run_speed
+		if $Pivot/Camera.fov > 70:
+			$Pivot/Camera.fov -= 1
+	else:
+		cur_speed = run_speed
+		if $Pivot/Camera.fov > 70:
+			$Pivot/Camera.fov -= 1
+	
 	velocity.y += gravity * delta
-	var desired_velocity = get_input() * max_speed
+	var desired_velocity = get_input() * cur_speed
 	
 	velocity.x = desired_velocity.x
 	velocity.z = desired_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	
+	if Input.is_key_pressed(KEY_Q):
+		#Peak Left
+		$Pivot/Camera.translation.x = -1.25
+		$Pivot/Camera.rotation_degrees.z = 15
+	elif Input.is_key_pressed(KEY_E):
+		#Peak Right
+		$Pivot/Camera.translation.x = 1.25
+		$Pivot/Camera.rotation_degrees.z = -15
+	else:
+		#Resets camera to normal spot
+		$Pivot/Camera.translation.x = 0
+		$Pivot/Camera.rotation_degrees.z = 0
+	

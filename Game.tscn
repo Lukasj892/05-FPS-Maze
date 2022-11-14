@@ -1,10 +1,13 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Key.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Exit/Exit.gd" type="Script" id=3]
+[ext_resource path="res://Exit/Light1.gd" type="Script" id=3]
 [ext_resource path="res://UI/Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Keys.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Exit/Light2.gd" type="Script" id=6]
+[ext_resource path="res://Exit/Light3.gd" type="Script" id=7]
+[ext_resource path="res://UI/Sprint.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
@@ -14,8 +17,6 @@ albedo_color = Color( 0.266667, 0.266667, 0.266667, 1 )
 
 [sub_resource type="ConvexPolygonShape" id=10]
 points = PoolVector3Array( -50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50 )
-
-[sub_resource type="SphereShape" id=6]
 
 [sub_resource type="CubeMesh" id=7]
 size = Vector3( 15, 10, 1 )
@@ -194,22 +195,49 @@ material/0 = SubResource( 2 )
 shape = SubResource( 10 )
 
 [node name="Key" parent="Maze" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.64325, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -15 )
 
-[node name="Exit" type="Area" parent="Maze"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.057, 0, 0 )
+[node name="Key2" parent="Maze" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 34 )
+
+[node name="Key3" parent="Maze" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 5 )
+
+[node name="Key4" parent="Maze" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 35 )
+
+[node name="Light1" type="Area" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 3, -48.752 )
 script = ExtResource( 3 )
 
-[node name="Light" type="OmniLight" parent="Maze/Exit"]
+[node name="Light" type="OmniLight" parent="Maze/Light1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31312, 0 )
 light_color = Color( 1, 0, 0, 1 )
-light_energy = 10.0
+light_energy = 3.0
 omni_range = 3.0
 omni_attenuation = 2.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Maze/Exit"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26061, 0 )
-shape = SubResource( 6 )
+[node name="Light2" type="Area" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -48.752 )
+script = ExtResource( 6 )
+
+[node name="Light" type="OmniLight" parent="Maze/Light2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31312, 0 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 3.0
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="Light3" type="Area" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -48.752 )
+script = ExtResource( 7 )
+
+[node name="Light" type="OmniLight" parent="Maze/Light3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31312, 0 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 3.0
+omni_range = 3.0
+omni_attenuation = 2.0
 
 [node name="Walls" type="StaticBody" parent="Maze"]
 
@@ -609,8 +637,8 @@ current = true
 
 [node name="Keys" parent="Player/Pivot/Camera" instance=ExtResource( 5 )]
 
+[node name="Sprint" parent="Player/Pivot/Camera" instance=ExtResource( 8 )]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="UI" instance=ExtResource( 4 )]
-
-[connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
