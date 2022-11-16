@@ -1,10 +1,10 @@
 # Project Name
 SCP: Escape from 076-2
 
-##Context and date
+## Context and date
 Created for Project 5 in C220
 
-Description
+## Description
 You are a researcher for the SCP foundation, a foundation dedicated to containing anomolous entites. One of these entities is SCP-076-2, aka Able. Able is
 a inhumanly strong humanoid who whenever he can, will go on a rampage, killing several SCP staff. You need to escape the facility without being detected by
 Able; your life depends on it.
