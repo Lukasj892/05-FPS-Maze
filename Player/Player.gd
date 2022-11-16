@@ -55,12 +55,16 @@ func _physics_process(delta):
 	
 	if Input.is_key_pressed(KEY_Q):
 		#Peak Left
-		$Pivot/Camera.translation.x = -1.25
-		$Pivot/Camera.rotation_degrees.z = 15
+		if $Pivot/Camera.translation.x > -1.25:
+			$Pivot/Camera.translation.x += -.125 * 2
+		if $Pivot/Camera.rotation_degrees.z < 15:
+			$Pivot/Camera.rotation_degrees.z += 1.5 *2
 	elif Input.is_key_pressed(KEY_E):
 		#Peak Right
-		$Pivot/Camera.translation.x = 1.25
-		$Pivot/Camera.rotation_degrees.z = -15
+		if $Pivot/Camera.translation.x < 1.25:
+			$Pivot/Camera.translation.x += .125 * 2
+		if $Pivot/Camera.rotation_degrees.z > -15:
+			$Pivot/Camera.rotation_degrees.z += -1.5 *2
 	else:
 		#Resets camera to normal spot
 		$Pivot/Camera.translation.x = 0

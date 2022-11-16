@@ -2,11 +2,20 @@ extends KinematicBody
 
 var path = []
 var path_node = 0
-
-var speed = 8
+var line_of_sight = false
+var speed = 4
 
 onready var nav = get_parent()
 onready var player = get_node("/root/Game/Player")
+onready var ray = $RayCast
+
+func _process(_delta):
+	if player != null:
+		ray.cast_to = ray.to_local(player.global_transform.origin) #Sends raycast towards player.
+		var c = ray.get_collider()
+		speed = 4
+		if c and c.name == "Player": #If raycast hits player...
+			speed = 10
 
 func _physics_process(_delta):
 	if path_node < path.size():
