@@ -31,3 +31,7 @@ func move_towards(target_pos):
 
 func _on_Timer_timeout():
 	move_towards(player.global_transform.origin)
+
+func _on_Area_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene("res://UI/DeathScene.tscn")
