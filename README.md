@@ -21,7 +21,9 @@ Able will slowly move in the player's direction, but will speed up considerable 
 
 (Able's navigation and pathfinding) 3D AI Pathfinding With Navmesh (Godot tutorial): https://www.youtube.com/watch?v=YFgrpp1fpOI
 
-(Able detecting the player) Excercise-04c-Hide-and-Seek: https://github.com/BL-MSCH-C220-F22/Exercise-04c-Hide-and-Seek
+(Able detecting the player) Excercise-04c-Hide-and-Seek: https://github.com/BL-MSCH-C220-F22/Exercise-04c-Hide-and-Seek (Bat.gd script)
+
+How to Hide Mouse Cursor In Godot: https://www.youtube.com/watch?v=-nNxUiHJ97Y
 
 ## Future Development
 n/a
