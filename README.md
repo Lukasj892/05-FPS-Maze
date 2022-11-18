@@ -16,6 +16,8 @@ Player is in first person. Use the mouse to look around, WASD to move, hold Q or
 
 Able will slowly move in the player's direction, but will speed up considerable when the player is in sight of Able. 
 
+Door and Gun were created using Blender by myself.
+
 ## References
 (Able's navigation and pathfinding) 3D AI Pathfinding With Navmesh (Godot tutorial): https://www.youtube.com/watch?v=YFgrpp1fpOI
 
