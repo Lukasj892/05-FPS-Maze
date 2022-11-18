@@ -12,7 +12,7 @@ Able; your life depends on it.
 ## Implementation
 Player can find keys used to open the door to escape.
 
-Player is in first person. Use the mouse to look around, WASD to move, hold Q or E to peak around corners, and hold shift to sprint.
+Player is in first person. Use the mouse to look around, WASD to move, hold Q or E to peak around corners (Able won't see you if you're careful), and hold shift to sprint.
 
 Able will slowly move in the player's direction, but will speed up considerable when the player is in sight of Able. 
 
